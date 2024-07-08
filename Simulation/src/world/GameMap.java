@@ -17,23 +17,34 @@ public class GameMap {
                 list.add(new Cell(new Coordinates(i, j)));
             }
         }
-    }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-
-    public Cell getCellByCoordinates(Coordinates c) {
-        return list.stream().filter(data -> data.getCoordinates().equals(c)).findFirst().get();
+        list.forEach(this::findSurroundingCell);
     }
 
     @Override
     public String toString() {
         return "GameMap:\n" + list;
+    }
+
+    private void findSurroundingCell(Cell cell) {
+        List<Cell> temp = new ArrayList<>();
+
+        for (Cell another : list) {
+            if (cell.getCoordinates().getX() == another.getCoordinates().getX() + 1
+                    && cell.getCoordinates().getY() == another.getCoordinates().getY()) {
+                temp.add(another);
+            } else if (cell.getCoordinates().getX() == another.getCoordinates().getX() - 1
+                    && cell.getCoordinates().getY() == another.getCoordinates().getY()) {
+                temp.add(another);
+            } else if (cell.getCoordinates().getY() == another.getCoordinates().getY() + 1
+                    && cell.getCoordinates().getX() == another.getCoordinates().getX()) {
+                temp.add(another);
+            } else if (cell.getCoordinates().getY() == another.getCoordinates().getY() - 1
+                    && cell.getCoordinates().getX() == another.getCoordinates().getX()) {
+                temp.add(another);
+            }
+        }
+
+        cell.SetSurroundingCell(temp);
     }
 }
