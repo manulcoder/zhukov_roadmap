@@ -1,4 +1,4 @@
 package entity.animal;
 
-public class Predator {
+public class Predator extends Creature{
 }

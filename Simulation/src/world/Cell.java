@@ -14,11 +14,18 @@ public class Cell {
 
     public Cell(Coordinates coordinates) {
         this.coordinates = coordinates;
-        entity = new Herbivore();
+    }
+
+    public void setEntity(Entity entity) {
+        this.entity = entity;
     }
 
     public Coordinates getCoordinates() {
         return coordinates;
+    }
+
+    public Entity getEntity() {
+        return entity;
     }
 
     public void SetSurroundingCell(List<Cell> list) {
@@ -30,6 +37,11 @@ public class Cell {
         return "\n\tCell:\n" +
                 "\t\tcoordinates: " + coordinates +
                 "\t\tentity: " + entity +
-                "\t\tsurroundingCells: " + surroundingCells.size() ;
+                "\t\tsurroundingCells: " + surroundingCells.size();
+    }
+
+
+    public boolean isCellFree() {
+        return entity == null;
     }
 }

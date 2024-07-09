@@ -7,7 +7,6 @@ public class Main {
         new Window();
 
         GameMap map = new GameMap(10,10);
-
         System.out.println(map);
     }
 }

@@ -19,6 +19,23 @@ public class GameMap {
         }
 
         list.forEach(this::findSurroundingCell);
+        WorldPopulate.setEntityRandom(list);
+    }
+
+    public Cell getCellByCoordinates(int x, int y) {
+        return list
+                .stream()
+                .filter(item -> item.getCoordinates().getX() == x && item.getCoordinates().getY() == y)
+                .findFirst()
+                .get();
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     @Override
